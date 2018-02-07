@@ -220,7 +220,7 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
 
-    open var didSelectItemAtIndexHandler: ((_ indexPath: Int) -> ())?
+    open var didSelectItemAtIndexHandler: ((_ indexPath: Int?) -> ())?
     open var isShown: Bool!
 
     fileprivate weak var navigationController: UINavigationController?
@@ -332,7 +332,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         self.backgroundView.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
 
-        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
+        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.didTapOutsideOfMenu));
         self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
 
         // Init properties
@@ -374,6 +374,11 @@ open class BTNavigationDropdownMenu: UIView {
 
         // By default, hide menu view
         self.menuWrapper.isHidden = true
+    }
+  
+    @objc private func didTapOutsideOfMenu() {
+      hideMenu()
+      didSelectItemAtIndexHandler!(nil)
     }
 
     override open func layoutSubviews() {

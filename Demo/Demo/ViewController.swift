@@ -40,7 +40,10 @@ class ViewController: UIViewController {
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
         menuView.maskBackgroundOpacity = 0.3
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> Void in
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int?) -> Void in
+            guard let indexPath = indexPath else {
+              return
+            }
             print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath]
         }
