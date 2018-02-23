@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         // "Old" version
         // menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items)
 
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.index(2), items: items)
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController?.view, title: BTTitle.index(2), items: items)
 
         // Another way to initialize:
         // menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title("Dropdown Menu"), items: items)
