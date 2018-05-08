@@ -42,7 +42,7 @@ open class BTNavigationDropdownMenu: UIView {
     // The height of the cell. Default is 50
     open var cellHeight: NSNumber! {
         get {
-            return self.configuration.cellHeight as NSNumber!
+            return self.configuration.cellHeight as NSNumber
         }
         set(value) {
           self.configuration.cellHeight = CGFloat(truncating: value)
@@ -382,13 +382,21 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     override open func layoutSubviews() {
-        self.menuTitle.sizeToFit()
-        self.menuTitle.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
-        self.menuTitle.textColor = self.configuration.menuTitleColor
-        self.menuArrow.sizeToFit()
-        self.menuArrow.center = CGPoint(x: self.menuTitle.frame.maxX + self.configuration.arrowPadding, y: self.frame.size.height/2)
-        self.menuWrapper.frame.origin.y = self.navigationController?.navigationBar.frame.maxY ?? 0
-        self.tableView.reloadData()
+        menuTitle.sizeToFit()
+        menuArrow.sizeToFit()
+        if let nc = navigationController {
+          var padding: CGFloat = nc.navigationItem.leftBarButtonItem == nil ? 0 : 8
+          padding += nc.navigationItem.rightBarButtonItem == nil ? 0 : 8
+          let widthOfButtons = (nc.toolbar.items?.reduce(0, {$0 + $1.width}) ?? 0) + padding
+          if menuTitle.frame.width > nc.view.bounds.width - widthOfButtons - (configuration.arrowPadding * 2) - menuArrow.bounds.width {
+            menuTitle.frame.size.width = nc.view.bounds.width - widthOfButtons - (configuration.arrowPadding * 2) - menuArrow.bounds.width
+          }
+        }
+        menuTitle.center = CGPoint(x: (frame.size.width - (menuArrow.bounds.width + configuration.arrowPadding))/2, y: frame.size.height/2)
+        menuTitle.textColor = configuration.menuTitleColor
+        menuArrow.center = CGPoint(x: menuTitle.frame.maxX + configuration.arrowPadding, y: frame.size.height/2)
+        menuWrapper.frame.origin.y = navigationController?.navigationBar.frame.maxY ?? 0
+        tableView.reloadData()
     }
 
     open func show() {
