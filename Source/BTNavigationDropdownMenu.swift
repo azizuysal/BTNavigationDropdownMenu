@@ -385,9 +385,13 @@ open class BTNavigationDropdownMenu: UIView {
         menuTitle.sizeToFit()
         menuArrow.sizeToFit()
         if let nc = navigationController {
-          var padding: CGFloat = nc.navigationItem.leftBarButtonItem == nil ? 0 : 8
-          padding += nc.navigationItem.rightBarButtonItem == nil ? 0 : 8
-          let widthOfButtons = (nc.toolbar.items?.reduce(0, {$0 + $1.width}) ?? 0) + padding
+          let ni = nc.navigationBar.items?[0]
+          var padding: CGFloat = 0
+          let leftButtons = ni?.leftBarButtonItems?.reduce(0, {$0 + $1.titleWidth}) ?? 0
+          if leftButtons > 0 { padding += 8 }
+          let rightButtons = ni?.rightBarButtonItems?.reduce(0, {$0 + $1.titleWidth}) ?? 0
+          if rightButtons > 0 { padding += 8 }
+          let widthOfButtons = leftButtons + rightButtons + padding
           if menuTitle.frame.width > nc.view.bounds.width - widthOfButtons - (configuration.arrowPadding * 2) - menuArrow.bounds.width {
             menuTitle.frame.size.width = nc.view.bounds.width - widthOfButtons - (configuration.arrowPadding * 2) - menuArrow.bounds.width
           }

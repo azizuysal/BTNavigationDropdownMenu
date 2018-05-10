@@ -21,6 +21,7 @@
 		2E44D6AF1B4C326300C9C49E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6AD1B4C326300C9C49E /* Main.storyboard */; };
 		2E44D6B11B4C326300C9C49E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B01B4C326300C9C49E /* Images.xcassets */; };
 		2E44D6B41B4C326300C9C49E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B21B4C326300C9C49E /* LaunchScreen.xib */; };
+		8FA2B97F20A4B49400AAFCE9 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA2B97E20A4B49400AAFCE9 /* UIBarButtonItem+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		2E44D6B31B4C326300C9C49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E44D6B91B4C326300C9C49E /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E44D6BE1B4C326300C9C49E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FA2B97E20A4B49400AAFCE9 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				0B11A6301F0C12F500CB4A0B /* UIViewController+Extension.swift */,
 				0B11A63E1F0C131A00CB4A0B /* UIView+Extension.swift */,
+				8FA2B97E20A4B49400AAFCE9 /* UIBarButtonItem+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				2E44D6AC1B4C326300C9C49E /* ViewController.swift in Sources */,
 				0B11A6371F0C12F500CB4A0B /* BTNavigationDropdownMenu.swift in Sources */,
 				0B11A6391F0C12F500CB4A0B /* UIViewController+Extension.swift in Sources */,
+				8FA2B97F20A4B49400AAFCE9 /* UIBarButtonItem+Extension.swift in Sources */,
 				0B11A63F1F0C131A00CB4A0B /* UIView+Extension.swift in Sources */,
 				0B11A63D1F0C12F500CB4A0B /* BTTableViewCell.swift in Sources */,
 				0B11A63C1F0C12F500CB4A0B /* BTTableView.swift in Sources */,
